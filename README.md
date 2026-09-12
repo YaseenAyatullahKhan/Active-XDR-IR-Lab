@@ -339,4 +339,4 @@ For the complete, step-by-step troubleshooting reference including exact command
 
 ---
 
-*Built as part of a home lab portfolio series. Other projects: [Multi-Tenant Linux Isolation & Bash Automation](link) · [Multi-VLAN Dual-Stack ROAS Topology (Packet Tracer)](link)*
+*Built as part of a home lab portfolio series. Other projects: [Multi-Tenant Linux Isolation & Bash Automation](https://github.com/YaseenAyatullahKhan/Ubuntu-SysAdmin-SecOps-HomeLab) · [Multi-VLAN Dual-Stack ROAS Topology (Packet Tracer)](https://github.com/YaseenAyatullahKhan/Multi-VLAN_Dual-Stack_Campus_Network_Backbone)*
