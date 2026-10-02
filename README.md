@@ -222,11 +222,11 @@ The integration chain works as follows: a file change in the monitored directory
 
 Tested using the EICAR test string — a harmless, internationally standardised test file that every AV engine flags as malicious by convention, producing a VirusTotal positive result without requiring actual malware in the lab environment.
 
-**📸** `screenshots/12-fim-config/` — `<directories realtime="yes">` config line  
-**📸** `screenshots/13-vt-integration/` — `<integration>` block (API key redacted)  
-**📸** `screenshots/14-eicar-drop/` — Terminal `ls -la` showing EICAR file drop with timestamp  
-**📸** `screenshots/15-fim-alert/` — Dashboard alert for FIM "Added file" event  
-**📸** `screenshots/16-vt-enrichment/` — VirusTotal-enriched alert showing detection verdict
+**📸** `screenshots/11-fim-config/` — `<directories realtime="yes">` config line  
+**📸** `screenshots/12-vt-integration/` — `<integration>` block (API key redacted)  
+**📸** `screenshots/13-eicar-drop/` — Terminal `ls -la` showing EICAR file drop with timestamp  
+**📸** `screenshots/14-fim-alert/` — Dashboard alert for FIM "Added file" event  
+**📸** `screenshots/15-vt-enrichment/` — VirusTotal-enriched alert showing detection verdict
 
 ---
 
