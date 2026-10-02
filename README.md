@@ -127,7 +127,7 @@ EOF
 sudo systemctl daemon-reload
 ```
 
-**📸** `screenshots/01-ova-import/` — VMware Wazuh OVA settings  
+**📸** `screenshots/01-wazuh-vm-config/` — VMware Wazuh OVA settings  
 **📸** `screenshots/02-dns-hardening/` — `/etc/hosts` entry and `getent` fast-resolution confirmation  
 **📸** `screenshots/03-password-tool/` — Password tool completing cleanly (key redacted)  
 **📸** `screenshots/04-dashboard-login/` — Wazuh dashboard overview, all API checks green
