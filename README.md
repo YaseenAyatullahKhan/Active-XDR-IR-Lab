@@ -62,7 +62,7 @@ graph TD
 ```
 defender-wazuh/
 ├── README.md                    ← you are here
-├── Troubleshooting.md           ← full troubleshooting reference
+├── troubleshooting.md           ← full troubleshooting reference
 ├── config/
 │   ├── ossec-manager.conf       ← manager ossec.conf (FIM + VT + Active Response blocks)
 │   ├── ossec-linux-agent.conf   ← linux victim agent config
@@ -71,26 +71,27 @@ defender-wazuh/
 │   └── (any custom local rules added, if applicable)
 └── screenshots/
     ├── 01-wazuh-vm-config/
-    ├── 02-dns-hardening/
-    ├── 03-password-tool/
-    ├── 04-dashboard-login/
-    ├── 05-agent-wizard/
-    ├── 06-agents-active/
-    ├── 07-sysmon-install/
-    ├── 08-sysmon-ossecconf/
-    ├── 09-sysmon-telemetry/
-    ├── 10-fim-config/
-    ├── 11-vt-integration/
-    ├── 12-eicar-drop/
-    ├── 13-fim-alert/
-    ├── 14-vt-enrichment/
-    ├── 15-active-response-config/  ← planned
-    ├── 16-hydra-attack/            ← planned
-    ├── 17-rule-5763-alert/         ← planned
-    ├── 18-mitre-tag/               ← planned
-    ├── 19-iptables-drop/           ← planned
-    ├── 20-active-response-log/     ← planned
-    └── 21-hydra-blocked/           ← planned
+    ├── 02-network-adapter/
+    ├── 03-dns-hardening/
+    ├── 04-password-tool/
+    ├── 05-dashboard-login/
+    ├── 06-agent-wizard/
+    ├── 07-agents-active/
+    ├── 08-sysmon-install/
+    ├── 09-sysmon-ossecconf/
+    ├── 10-sysmon-telemetry/
+    ├── 11-fim-config/
+    ├── 12-vt-integration/
+    ├── 13-eicar-drop/
+    ├── 14-fim-alert/
+    ├── 15-vt-enrichment/
+    ├── 16-active-response-config/  ← planned
+    ├── 17-hydra-attack/            ← planned
+    ├── 18-rule-5763-alert/         ← planned
+    ├── 19-mitre-tag/               ← planned
+    ├── 20-iptables-drop/           ← planned
+    ├── 21-active-response-log/     ← planned
+    └── 22-hydra-blocked/           ← planned
 ```
 
 ---
@@ -128,9 +129,10 @@ sudo systemctl daemon-reload
 ```
 
 **📸** `screenshots/01-wazuh-vm-config/` — VMware Wazuh OVA settings  
-**📸** `screenshots/02-dns-hardening/` — `/etc/hosts` entry and `getent` fast-resolution confirmation  
-**📸** `screenshots/03-password-tool/` — Password tool completing cleanly (key redacted)  
-**📸** `screenshots/04-dashboard-login/` — Wazuh dashboard overview, all API checks green
+**📸** `screenshots/02-network-adapter/` — Host-only adapter configuration
+**📸** `screenshots/03-dns-hardening/` — `/etc/hosts` entry and `getent` fast-resolution confirmation  
+**📸** `screenshots/04-password-tool/` — Password tool completing cleanly (key redacted)  
+**📸** `screenshots/05-dashboard-login/` — Wazuh dashboard overview, all API checks green
 
 ---
 
@@ -185,11 +187,11 @@ Response confirmed **1,523 real alert documents** in the index, including Sysmon
 
 An unexpected bonus: Wazuh's Security Configuration Assessment (SCA) module ran automatically against the Linux agent on enrollment, executing the **CIS Ubuntu Linux 22.04 LTS Benchmark** and mapping each finding to MITRE tactics, PCI-DSS, SOC 2, ISO 27001, and NIST 800-53 simultaneously — a free compliance-posture baseline generated without any additional configuration.
 
-**📸** `screenshots/05-agent-wizard/` — Deploy new agent wizard with generated install command  
-**📸** `screenshots/06-agents-active/` — Agents list showing both Linux and Windows endpoints "Active"  
-**📸** `screenshots/07-sysmon-install/` — Sysmon install confirmation in PowerShell  
-**📸** `screenshots/08-sysmon-ossecconf/` — `ossec.conf` Sysmon eventchannel block  
-**📸** `screenshots/09-sysmon-telemetry/` — Dev Tools console showing live Sysmon alert documents with MITRE tags
+**📸** `screenshots/06-agent-wizard/` — Deploy new agent wizard with generated install command  
+**📸** `screenshots/07-agents-active/` — Agents list showing both Linux and Windows endpoints "Active"  
+**📸** `screenshots/08-sysmon-install/` — Sysmon install confirmation in PowerShell  
+**📸** `screenshots/09-sysmon-ossecconf/` — `ossec.conf` Sysmon eventchannel block  
+**📸** `screenshots/10-sysmon-telemetry/` — Dev Tools console showing live Sysmon alert documents with MITRE tags
 
 ---
 
@@ -220,11 +222,11 @@ The integration chain works as follows: a file change in the monitored directory
 
 Tested using the EICAR test string — a harmless, internationally standardised test file that every AV engine flags as malicious by convention, producing a VirusTotal positive result without requiring actual malware in the lab environment.
 
-**📸** `screenshots/10-fim-config/` — `<directories realtime="yes">` config line  
-**📸** `screenshots/11-vt-integration/` — `<integration>` block (API key redacted)  
-**📸** `screenshots/12-eicar-drop/` — Terminal `ls -la` showing EICAR file drop with timestamp  
-**📸** `screenshots/13-fim-alert/` — Dashboard alert for FIM "Added file" event  
-**📸** `screenshots/14-vt-enrichment/` — VirusTotal-enriched alert showing detection verdict
+**📸** `screenshots/12-fim-config/` — `<directories realtime="yes">` config line  
+**📸** `screenshots/13-vt-integration/` — `<integration>` block (API key redacted)  
+**📸** `screenshots/14-eicar-drop/` — Terminal `ls -la` showing EICAR file drop with timestamp  
+**📸** `screenshots/15-fim-alert/` — Dashboard alert for FIM "Added file" event  
+**📸** `screenshots/16-vt-enrichment/` — VirusTotal-enriched alert showing detection verdict
 
 ---
 
@@ -271,13 +273,13 @@ When a brute-force attack is detected against the Linux victim, Wazuh automatica
 
 #### Expected Evidence (Screenshots Pending)
 
-**📸** `screenshots/15-active-response-config/` — Active Response XML block in `ossec.conf`  
-**📸** `screenshots/16-hydra-attack/` — Hydra terminal output mid-attack (before block)  
-**📸** `screenshots/17-rule-5763-alert/` — Rule 5763 alert in dashboard  
-**📸** `screenshots/18-mitre-tag/` — MITRE ATT&CK T1110 tag on alert detail pane  
-**📸** `screenshots/19-iptables-drop/` — `iptables -L -n` showing DROP rule for attacker IP  
-**📸** `screenshots/20-active-response-log/` — `active-responses.log` excerpt showing `firewall-drop` invocation  
-**📸** `screenshots/21-hydra-blocked/` — Hydra output after block, showing connection timeouts
+**📸** `screenshots/16-active-response-config/` — Active Response XML block in `ossec.conf`  
+**📸** `screenshots/17-hydra-attack/` — Hydra terminal output mid-attack (before block)  
+**📸** `screenshots/18-rule-5763-alert/` — Rule 5763 alert in dashboard  
+**📸** `screenshots/19-mitre-tag/` — MITRE ATT&CK T1110 tag on alert detail pane  
+**📸** `screenshots/20-iptables-drop/` — `iptables -L -n` showing DROP rule for attacker IP  
+**📸** `screenshots/21-active-response-log/` — `active-responses.log` excerpt showing `firewall-drop` invocation  
+**📸** `screenshots/22-hydra-blocked/` — Hydra output after block, showing connection timeouts
 
 ---
 
