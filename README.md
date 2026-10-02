@@ -129,7 +129,7 @@ sudo systemctl daemon-reload
 ```
 
 **📸** `screenshots/01-wazuh-vm-config/` — VMware Wazuh OVA settings  
-**📸** `screenshots/02-network-adapter/` — Host-only adapter configuration
+**📸** `screenshots/02-network-adapter/` — Host-only adapter configuration  
 **📸** `screenshots/03-dns-hardening/` — `/etc/hosts` entry and `getent` fast-resolution confirmation  
 **📸** `screenshots/04-password-tool/` — Password tool completing cleanly (key redacted)  
 **📸** `screenshots/05-dashboard-login/` — Wazuh dashboard overview, all API checks green
