@@ -313,7 +313,7 @@ When a brute-force attack is detected against the Linux victim, Wazuh automatica
 
 For the complete, step-by-step troubleshooting reference including exact commands and expected outputs for every failure mode encountered during this build:
 
-👉 **[Full Troubleshooting Guide](./troubleshooting.md)**
+👉 **[Full Troubleshooting Guide](./Troubleshooting.md)**
 
 ---
 
