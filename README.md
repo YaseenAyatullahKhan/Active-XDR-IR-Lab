@@ -127,12 +127,20 @@ TimeoutStartSec=600
 EOF
 sudo systemctl daemon-reload
 ```
+VMware Wazuh OVA settings  
+![Output Screenshot 1](screenshots/01-wazuh-vm-config.png)  
+  
+Host-only adapter configuration  
+![Output Screenshot 2](screenshots/02-network-adapter.png)  
 
-**📸** `screenshots/01-wazuh-vm-config/` — VMware Wazuh OVA settings  
-**📸** `screenshots/02-network-adapter/` — Host-only adapter configuration  
-**📸** `screenshots/03-dns-hardening/` — `/etc/hosts` entry and `getent` fast-resolution confirmation  
-**📸** `screenshots/04-password-tool/` — Password tool completing cleanly (key redacted)  
-**📸** `screenshots/05-dashboard-login/` — Wazuh dashboard overview, all API checks green
+`/etc/hosts` entry and `getent` fast-resolution confirmation  
+![Output Screenshot 3](screenshots/03-dns-hardening.png)  
+
+Password tool completing cleanly (key redacted)  
+![Output Screenshot 4](screenshots/04-password-tool.png)  
+
+Wazuh dashboard overview, all API checks green  
+![Output Screenshot 5](screenshots/05-dashboard-login.png)  
 
 ---
 
@@ -187,11 +195,20 @@ Response confirmed **1,523 real alert documents** in the index, including Sysmon
 
 An unexpected bonus: Wazuh's Security Configuration Assessment (SCA) module ran automatically against the Linux agent on enrollment, executing the **CIS Ubuntu Linux 22.04 LTS Benchmark** and mapping each finding to MITRE tactics, PCI-DSS, SOC 2, ISO 27001, and NIST 800-53 simultaneously — a free compliance-posture baseline generated without any additional configuration.
 
-**📸** `screenshots/06-agent-wizard/` — Deploy new agent wizard with generated install command  
-**📸** `screenshots/07-agents-active/` — Agents list showing both Linux and Windows endpoints "Active"  
-**📸** `screenshots/08-sysmon-install/` — Sysmon install confirmation in PowerShell  
-**📸** `screenshots/09-sysmon-ossecconf/` — `ossec.conf` Sysmon eventchannel block  
-**📸** `screenshots/10-sysmon-telemetry/` — Dev Tools console showing live Sysmon alert documents with MITRE tags
+Deploy new agent wizard with generated install command  
+![Output 6](screenshots/06-agent-wizard.png)  
+  
+Agents list showing both Linux and Windows endpoints "Active"  
+![Output 7](screenshots/07-agents-active.png)  
+
+Sysmon install confirmation in PowerShell  
+![Output 8](screenshots/08-sysmon-install.png)  
+
+`ossec.conf` Sysmon eventchannel block  
+![Output 9](screenshots/09-sysmon-ossecconf.png)  
+
+Dev Tools console showing live Sysmon alert documents with MITRE tags  
+![Output 10](screenshots/10-sysmon-telemetry.png)
 
 ---
 
@@ -221,12 +238,19 @@ VirusTotal integration configured on the **manager** (not the agent — a common
 The integration chain works as follows: a file change in the monitored directory triggers a FIM (syscheck) alert → the manager's `wazuh-integratord` daemon picks up any alert from the `syscheck` group → queries VirusTotal with the file's hash → a second, enriched alert is generated containing VT's detection ratio and the names of any AV engines that flagged the file.
 
 Tested using the EICAR test string — a harmless, internationally standardised test file that every AV engine flags as malicious by convention, producing a VirusTotal positive result without requiring actual malware in the lab environment.
+  
+`<directories realtime="yes">` config line  
+![Output 11](screenshots/11-fim-config.png)  
 
-**📸** `screenshots/11-fim-config/` — `<directories realtime="yes">` config line  
-**📸** `screenshots/12-vt-integration/` — `<integration>` block (API key redacted)  
-**📸** `screenshots/13-eicar-drop/` — Terminal `ls -la` showing EICAR file drop with timestamp  
-**📸** `screenshots/14-fim-alert/` — Dashboard alert for FIM "Added file" event  
-**📸** `screenshots/15-vt-enrichment/` — VirusTotal-enriched alert showing detection verdict
+`<integration>` block (API key redacted)  
+![Output 12](screenshots/12-vt-integration.png)  
+
+Terminal `ls -la` showing EICAR file drop with timestamp  
+![Output 13](screenshots/13-eicar-drop.png)  
+
+Dashboard alert for FIM "Added file" event  
+![Output 14](screenshots/14-fim-alert.png)  
+`screenshots/15-vt-enrichment/` — VirusTotal-enriched alert showing detection verdict
 
 ---
 
@@ -273,13 +297,13 @@ When a brute-force attack is detected against the Linux victim, Wazuh automatica
 
 #### Expected Evidence (Screenshots Pending)
 
-**📸** `screenshots/16-active-response-config/` — Active Response XML block in `ossec.conf`  
-**📸** `screenshots/17-hydra-attack/` — Hydra terminal output mid-attack (before block)  
-**📸** `screenshots/18-rule-5763-alert/` — Rule 5763 alert in dashboard  
-**📸** `screenshots/19-mitre-tag/` — MITRE ATT&CK T1110 tag on alert detail pane  
-**📸** `screenshots/20-iptables-drop/` — `iptables -L -n` showing DROP rule for attacker IP  
-**📸** `screenshots/21-active-response-log/` — `active-responses.log` excerpt showing `firewall-drop` invocation  
-**📸** `screenshots/22-hydra-blocked/` — Hydra output after block, showing connection timeouts
+`screenshots/16-active-response-config/` — Active Response XML block in `ossec.conf`  
+`screenshots/17-hydra-attack/` — Hydra terminal output mid-attack (before block)  
+`screenshots/18-rule-5763-alert/` — Rule 5763 alert in dashboard  
+`screenshots/19-mitre-tag/` — MITRE ATT&CK T1110 tag on alert detail pane  
+`screenshots/20-iptables-drop/` — `iptables -L -n` showing DROP rule for attacker IP  
+`screenshots/21-active-response-log/` — `active-responses.log` excerpt showing `firewall-drop` invocation  
+`screenshots/22-hydra-blocked/` — Hydra output after block, showing connection timeouts
 
 ---
 
